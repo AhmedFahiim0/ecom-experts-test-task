@@ -24,7 +24,7 @@ function App() {
           products={bundle.products}
           className="lg:w-[768px]"
         />
-        <ReviewPanel bundle={bundle} className="lg:w-[399px]" />
+        <ReviewPanel bundle={bundle} className="lg:w-[390px]" />
       </main>
       <Toaster position="bottom-right" richColors />
     </CartProvider>

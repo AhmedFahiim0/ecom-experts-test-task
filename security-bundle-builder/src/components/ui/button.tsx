@@ -8,7 +8,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         filled:
-          "bg-brand text-white font-checkout font-bold text-lg px-4 py-[13px] hover:bg-brand/90",
+          "bg-brand text-white font-checkout font-bold text-[17px] px-4 py-[13px] hover:bg-brand/90 h-12",
         outline:
           "border border-brand text-brand bg-transparent font-semibold text-lg leading-6 px-6 py-[5px] hover:bg-brand/5",
         underline:
@@ -34,11 +34,21 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export function Button({ className, variant, radius, fullWidth, ...props }: ButtonProps) {
+export function Button({
+  className,
+  variant,
+  radius,
+  fullWidth,
+  ...props
+}: ButtonProps) {
   return (
-    <button className={cn(buttonVariants({ variant, radius, fullWidth }), className)} {...props} />
+    <button
+      className={cn(buttonVariants({ variant, radius, fullWidth }), className)}
+      {...props}
+    />
   );
 }
