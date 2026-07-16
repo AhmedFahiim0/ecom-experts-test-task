@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 import { formatCurrency } from "@/utils/format-currency";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +26,18 @@ const cardVariants = cva(
   },
 );
 
+const priceVariants = cva("text-end", {
+  variants: {
+    structure: {
+      versionOne: "flex flex-col",
+      versionTwo: "flex flex-row items-baseline gap-2",
+    },
+  },
+  defaultVariants: {
+    structure: "versionOne",
+  },
+});
+
 export interface ProductCardProps {
   product: Product;
   quantity: number;
@@ -34,6 +46,7 @@ export interface ProductCardProps {
   onDecrement: () => void;
   onSelectVariant?: (variantId: string) => void;
   className?: string;
+  structure?: VariantProps<typeof cardVariants>["structure"];
 }
 
 export function ProductCard({
@@ -44,6 +57,7 @@ export function ProductCard({
   onDecrement,
   onSelectVariant,
   className,
+  structure,
 }: ProductCardProps) {
   const selected = quantity > 0;
   const min = product.required ? 1 : 0;
@@ -51,7 +65,7 @@ export function ProductCard({
     <div
       className={cn(
         "relative md:basis-[361.5px]",
-        cardVariants({ selected }),
+        cardVariants({ selected, structure }),
         className,
       )}
     >
@@ -89,7 +103,7 @@ export function ProductCard({
             max={product.maxQuantity}
             aria-label={product.name}
           />
-          <div className="flex flex-col text-end">
+          <div className={priceVariants({ structure })}>
             {product.comparePrice !== product.price ? (
               <span className="text-sale line-through">
                 {formatCurrency(product.comparePrice)}
