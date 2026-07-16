@@ -12,7 +12,7 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
 
   return (
     <section className={cn("rounded-lg bg-page", className)}>
-      <span className="block p-[15px] text-sm uppercase tracking-label text-text-muted">
+      <span className="block p-[15px] md:text-sm text-xs uppercase tracking-label text-text-muted">
         Review
       </span>
       <div className="px-5 pb-5">

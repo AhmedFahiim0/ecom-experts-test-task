@@ -33,7 +33,6 @@
   --color-success-bg: rgba(29, 240, 187, 0.04);
   --color-sale: #d8392b;
 
-  /* Radii — the design tops out at 10px, no pill/full radii appear anywhere */
   --radius-xs: 2px;
   --radius-sm: 3px;
   --radius-md: 4px;
@@ -41,10 +40,7 @@
   --radius-btn: 7px;
   --radius-lg: 10px;
   --font-gilroy: "Gilroy", "Inter", ui-sans-serif, system-ui, sans-serif;
-  /* TT Norms Pro is a paid TypeType font with no legitimate free download —
-     Inter is the closest free match (per font-similarity data) and is used
-     as a stand-in for the checkout button until licensed TT Norms Pro files
-     are available. */
+
   --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale, overridden to match the Figma px values exactly */

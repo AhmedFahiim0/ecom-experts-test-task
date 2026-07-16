@@ -17,7 +17,7 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
       </div>
 
       <div className="flex flex-1 items-center justify-between">
-        <span className="text-[14px] font-medium text-text-strong">
+        <span className="md:text-base text-sm font-medium text-text-strong">
           {product.name}
         </span>
 
@@ -33,14 +33,14 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
             />
           ) : null}
 
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-end text-sm md:text-base">
             {product.comparePrice !== product.price ? (
-              <span className="text-base text-text-strike line-through">
+              <span className="text-text-strike line-through">
                 {formatCurrency(product.comparePrice * quantity)}
                 {product.stepId === "plan" ? "/mo" : ""}
               </span>
             ) : null}
-            <span className="text-base font-semibold text-brand">
+            <span className="font-semibold text-brand">
               {product.priceLabel ?? formatCurrency(product.price * quantity)}
             </span>
           </div>

@@ -22,9 +22,9 @@ function App() {
         <BundleBuilder
           steps={bundle.steps}
           products={bundle.products}
-          className="lg:w-[768px]"
+          className="lg:w-[768px] w-full"
         />
-        <ReviewPanel bundle={bundle} className="lg:w-[390px]" />
+        <ReviewPanel bundle={bundle} className="lg:w-[390px] w-full" />
       </main>
       <Toaster position="bottom-right" richColors />
     </CartProvider>

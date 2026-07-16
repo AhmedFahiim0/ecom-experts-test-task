@@ -45,7 +45,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "relative basis-[361.5px] ",
+        "relative lg:basis-[361.5px] ",
         cardVariants({ selected }),
         className,
       )}
