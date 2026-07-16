@@ -37,7 +37,13 @@ export interface StepInfo {
 export interface BundleData {
   steps: StepInfo[];
   financingLabel: string;
-  shipping: { label: string; icon: string; comparePrice: number };
+  shipping: {
+    label: string;
+    icon: string;
+    comparePrice: number;
+    price: number;
+    priceLabel?: string;
+  };
   guarantee: { heading: string; body: string };
   products: Product[];
 }

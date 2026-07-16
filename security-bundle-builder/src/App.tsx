@@ -18,6 +18,9 @@ function App() {
 
   return (
     <CartProvider products={bundle.products}>
+      <h1 className="md:hidden text-4xl font-bold text-center mt-[31px] mb-5">
+        Let’s get started!
+      </h1>
       <main className="flex flex-col lg:flex-row items-start gap-8 lg:px-[122px] lg:py-[49px]">
         <BundleBuilder
           steps={bundle.steps}

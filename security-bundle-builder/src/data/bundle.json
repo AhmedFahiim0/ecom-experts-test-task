@@ -28,6 +28,8 @@
   "shipping": {
     "label": "Fast Shipping",
     "comparePrice": 5.99,
+    "price": 0,
+    "priceLabel": "FREE",
     "icon": "/icons/icon-shipping.svg"
   },
   "guarantee": {
