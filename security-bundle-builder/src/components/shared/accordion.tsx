@@ -56,7 +56,12 @@ export function Accordion({
               aria-expanded={isOpen}
               onClick={() => onToggleStep(step.id)}
             >
-              <span className="block text-sm uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px] px-[15px] pt-[15px] ">
+              <span
+                className={cn(
+                  "block text-sm uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px] px-[15px] pt-[13px]",
+                  { "pt-[15px]": isOpen },
+                )}
+              >
                 Step {index + 1} of {steps.length}
               </span>
 

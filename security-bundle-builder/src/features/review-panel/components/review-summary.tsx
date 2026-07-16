@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import type { BundleData } from "@/types";
 import type { ReviewTotals } from "../types";
 import { Badge } from "@/components/ui/badge";
-import { ReviewLineItemRow } from "./review-line-item";
 
 export interface ReviewSummaryProps {
   bundle: BundleData;
