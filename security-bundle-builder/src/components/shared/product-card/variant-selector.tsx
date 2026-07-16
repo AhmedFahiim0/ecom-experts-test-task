@@ -3,7 +3,7 @@ import { cn } from "@/utils/cn";
 import type { ProductVariant } from "@/types";
 
 const chipVariants = cva(
-  "flex h-[26px] w-[65px] items-center justify-center gap-1 rounded-xs border-[0.5px] border-border-subtle px-1 transition-colors",
+  "flex h-[26px] w-[65px] items-center justify-center gap-1 rounded-xs border-[0.5px] border-border-subtle px-1 transition-colors font-medium",
   {
     variants: {
       chosen: {
@@ -43,9 +43,11 @@ export function VariantSelector({
             className={chipVariants({ chosen })}
             onClick={() => onSelect(variant.id)}
           >
-            <span
-              className="h-3.5 w-3.5 shrink-0 rounded-xs border border-border-subtle"
-              style={{ backgroundColor: variant.swatch }}
+            <img
+              src={variant.image}
+              alt=""
+              aria-hidden
+              className="h-3.5 w-3.5 shrink-0 rounded-xs border border-border-subtle object-cover"
             />
             <span className="text-xs tracking-[0.6px] leading-[100%]">
               {" "}

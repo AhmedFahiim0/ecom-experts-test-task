@@ -8,7 +8,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         filled:
-          "bg-brand text-white font-checkout font-bold text-[17px] px-4 py-[13px] hover:bg-brand/90 h-12",
+          "bg-brand text-white font-manrope font-bold text-[17px] px-4 py-[13px] hover:bg-brand/90 h-12",
         outline:
           "border border-brand text-brand bg-transparent font-semibold text-lg leading-6 px-6 py-[5px] hover:bg-brand/5",
         underline:

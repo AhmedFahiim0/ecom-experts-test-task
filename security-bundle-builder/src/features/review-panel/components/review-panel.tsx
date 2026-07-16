@@ -2,6 +2,7 @@ import { cn } from "@/utils/cn";
 import { useReviewPanelActions } from "../helpers/use-actions";
 import { ReviewLineItemRow } from "./review-line-item";
 import { ReviewSummary } from "./review-summary";
+import { ShippingRow } from "./shipping-row";
 import type { ReviewPanelProps } from "../types";
 
 export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
@@ -16,7 +17,7 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
       </span>
       <div className="px-5 pb-5">
         <div className="flex flex-col gap-1 mb-2.5">
-          <h2 className="text-xl font-semibold text-text  leading-[100%]">
+          <h2 className="text-xl font-semibold text-text leading-[100%]">
             Your security system
           </h2>
           <p className="text-sm text-text-secondary">
@@ -42,6 +43,8 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
             </div>
           ))}
         </div>
+
+        <ShippingRow shipping={bundle.shipping} />
 
         <ReviewSummary
           bundle={bundle}

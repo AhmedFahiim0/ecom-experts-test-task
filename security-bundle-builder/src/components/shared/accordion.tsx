@@ -46,7 +46,7 @@ export function Accordion({
         return (
           <div
             key={step.id}
-            className={cn("border-b border-border-divider last:border-b-0", {
+            className={cn("border-b border-border-divider", {
               "bg-page rounded-lg": isOpen,
             })}
           >
@@ -56,7 +56,7 @@ export function Accordion({
               aria-expanded={isOpen}
               onClick={() => onToggleStep(step.id)}
             >
-              <span className="block text-sm uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px]  px-[15px] pt-[15px]">
+              <span className="block text-sm uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px] px-[15px] pt-[15px] ">
                 Step {index + 1} of {steps.length}
               </span>
 
@@ -68,7 +68,7 @@ export function Accordion({
                     aria-hidden
                     className="h-[26px] w-[26px]"
                   />
-                  <span className="text-xl font-semibold text-text">
+                  <span className="text-xl font-semibold  text-text">
                     {step.title}
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export function Accordion({
                     variant="outline"
                     radius="btn"
                     onClick={() => onNext(nextStep.id)}
-                    className="w-fit mx-auto"
+                    className="w-fit mx-auto "
                   >
                     {step.nextLabel}
                   </Button>

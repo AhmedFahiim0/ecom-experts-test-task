@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
-const badgeVariants = cva("w-fit bg-brand text-white text-sm font-semibold", {
+const badgeVariants = cva("w-fit bg-brand text-white text-sm font-semibold ", {
   variants: {
     variant: {
       fullRounded: "rounded-lg",

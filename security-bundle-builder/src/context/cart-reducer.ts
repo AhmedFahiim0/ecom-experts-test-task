@@ -6,21 +6,31 @@ export const initialCartState: CartState = {
   savedAt: null,
 };
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
 export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case "INCREMENT": {
       const key = cartKey(action.productId, action.variantId);
-      const next = (state.quantities[key] ?? 0) + (action.step ?? 1);
+      const min = action.min ?? 0;
+      const max = action.max ?? Infinity;
+      const next = clamp((state.quantities[key] ?? 0) + (action.step ?? 1), min, max);
       return { ...state, quantities: { ...state.quantities, [key]: next } };
     }
     case "DECREMENT": {
       const key = cartKey(action.productId, action.variantId);
-      const next = Math.max(0, (state.quantities[key] ?? 0) - (action.step ?? 1));
+      const min = action.min ?? 0;
+      const max = action.max ?? Infinity;
+      const next = clamp((state.quantities[key] ?? 0) - (action.step ?? 1), min, max);
       return { ...state, quantities: { ...state.quantities, [key]: next } };
     }
     case "SET_QUANTITY": {
       const key = cartKey(action.productId, action.variantId);
-      const next = Math.max(0, action.quantity);
+      const min = action.min ?? 0;
+      const max = action.max ?? Infinity;
+      const next = clamp(action.quantity, min, max);
       return { ...state, quantities: { ...state.quantities, [key]: next } };
     }
     case "SELECT_VARIANT": {

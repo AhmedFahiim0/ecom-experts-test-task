@@ -19,7 +19,7 @@ export function ReviewSummary({
   onSaveForLater,
 }: ReviewSummaryProps) {
   return (
-    <div className="flex flex-col border-t border-border-divider pt-4">
+    <div className="flex flex-col">
       <div className="flex items-center justify-between">
         <img
           src="/products/satisfaction-badge.png"

@@ -23,9 +23,9 @@ function buildDefaultState(products: Product[]): CartState {
 
 interface CartContextValue {
   state: CartState;
-  increment: (productId: string, variantId?: string) => void;
-  decrement: (productId: string, variantId?: string) => void;
-  setQuantity: (productId: string, variantId: string | undefined, quantity: number) => void;
+  increment: (productId: string, variantId?: string, min?: number, max?: number) => void;
+  decrement: (productId: string, variantId?: string, min?: number, max?: number) => void;
+  setQuantity: (productId: string, variantId: string | undefined, quantity: number, min?: number, max?: number) => void;
   selectVariant: (productId: string, variantId: string) => void;
   save: () => void;
   quantityFor: (productId: string, variantId?: string) => number;
@@ -58,10 +58,12 @@ export function CartProvider({
   const value = useMemo<CartContextValue>(
     () => ({
       state,
-      increment: (productId, variantId) => dispatch({ type: "INCREMENT", productId, variantId }),
-      decrement: (productId, variantId) => dispatch({ type: "DECREMENT", productId, variantId }),
-      setQuantity: (productId, variantId, quantity) =>
-        dispatch({ type: "SET_QUANTITY", productId, variantId, quantity }),
+      increment: (productId, variantId, min, max) =>
+        dispatch({ type: "INCREMENT", productId, variantId, min, max }),
+      decrement: (productId, variantId, min, max) =>
+        dispatch({ type: "DECREMENT", productId, variantId, min, max }),
+      setQuantity: (productId, variantId, quantity, min, max) =>
+        dispatch({ type: "SET_QUANTITY", productId, variantId, quantity, min, max }),
       selectVariant: (productId, variantId) =>
         dispatch({ type: "SELECT_VARIANT", productId, variantId }),
       save: () => dispatch({ type: "SAVE" }),

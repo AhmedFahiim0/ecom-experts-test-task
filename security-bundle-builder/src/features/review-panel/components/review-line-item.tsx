@@ -8,7 +8,7 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="h-[41px] w-[41px] bg-white p-1 rounded-thumb">
+      <div className="h-[41px] w-[41px] bg-surface p-1 rounded-thumb">
         <img
           src={product.image}
           alt={product.name}

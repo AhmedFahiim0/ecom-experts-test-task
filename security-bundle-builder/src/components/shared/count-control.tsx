@@ -7,10 +7,9 @@ const stepperButtonVariants = cva(
   {
     variants: {
       state: {
-        enabled:
-          "bg-surface border-2 border-border-stepper text-text-strong hover:border-brand/40",
+        enabled: "bg-bg-muted text-text-strong hover:border-brand/40",
         disabled:
-          "bg-bg-disabled border border-border-divider text-text-strike",
+          "border-2 border-border-stepper border border-border-divider text-text-strike",
       },
     },
     defaultVariants: {
@@ -36,6 +35,7 @@ export function CountControl({
   min = 0,
   max,
   className,
+
   "aria-label": ariaLabel,
 }: CountControlProps) {
   const decrementDisabled = value <= min;

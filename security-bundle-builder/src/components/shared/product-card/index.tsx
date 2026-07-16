@@ -42,11 +42,10 @@ export function ProductCard({
 }: ProductCardProps) {
   const selected = quantity > 0;
   const min = product.required ? 1 : 0;
-
   return (
     <div
       className={cn(
-        "relative basis-[361.5px]",
+        "relative basis-[361.5px] ",
         cardVariants({ selected }),
         className,
       )}
@@ -59,10 +58,10 @@ export function ProductCard({
 
       <div className="flex flex-1 flex-col justify-between gap-2">
         <div>
-          <h3 className="tracking-wide text-text leading-[100%]">
+          <h3 className="tracking-wide text-text leading-[100%] font-semibold">
             {product.name}
           </h3>
-          <p className="text-sm leading-[1.3] text-text-secondary mt-2 mb-[10px]">
+          <p className="text-sm leading-[1.3] text-text-secondary mt-2 mb-[10px] line-clamp-3 font-medium">
             {product.description}
 
             <span className="ms-1 link-inline cursor-pointer">Learn More</span>

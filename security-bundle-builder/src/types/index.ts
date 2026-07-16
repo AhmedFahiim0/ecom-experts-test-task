@@ -5,7 +5,7 @@ export type ProductCategory = "camera" | "sensor" | "accessory" | "plan";
 export interface ProductVariant {
   id: string;
   label: string;
-  swatch: string;
+  image: string;
 }
 
 export interface Product {
@@ -37,7 +37,7 @@ export interface StepInfo {
 export interface BundleData {
   steps: StepInfo[];
   financingLabel: string;
-  shipping: { label: string; comparePrice: number };
+  shipping: { label: string; icon: string; comparePrice: number };
   guarantee: { heading: string; body: string };
   products: Product[];
 }
@@ -53,9 +53,9 @@ export interface CartState {
 }
 
 export type CartAction =
-  | { type: "INCREMENT"; productId: string; variantId?: string; step?: number }
-  | { type: "DECREMENT"; productId: string; variantId?: string; step?: number }
-  | { type: "SET_QUANTITY"; productId: string; variantId: string | undefined; quantity: number }
+  | { type: "INCREMENT"; productId: string; variantId?: string; step?: number; min?: number; max?: number }
+  | { type: "DECREMENT"; productId: string; variantId?: string; step?: number; min?: number; max?: number }
+  | { type: "SET_QUANTITY"; productId: string; variantId: string | undefined; quantity: number; min?: number; max?: number }
   | { type: "SELECT_VARIANT"; productId: string; variantId: string }
   | { type: "SAVE" }
   | { type: "RESTORE"; state: CartState };

@@ -25,6 +25,9 @@ export function useReviewPanelActions(products: Product[]) {
         const quantity = cart.quantityFor(product.id, variant?.id);
         if (quantity <= 0) continue;
 
+        const min = product.required ? 1 : 0;
+        const max = product.maxQuantity;
+
         items.push({
           key: `${product.id}:${variant?.id ?? "default"}`,
           product,
@@ -33,8 +36,8 @@ export function useReviewPanelActions(products: Product[]) {
           lineTotal: product.price * quantity,
           lineCompareTotal: product.comparePrice * quantity,
           hasAddControl: product.category === "camera",
-          onIncrement: () => cart.increment(product.id, variant?.id),
-          onDecrement: () => cart.decrement(product.id, variant?.id),
+          onIncrement: () => cart.increment(product.id, variant?.id, min, max),
+          onDecrement: () => cart.decrement(product.id, variant?.id, min, max),
         });
       }
     }

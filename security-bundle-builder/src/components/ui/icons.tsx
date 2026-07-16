@@ -4,17 +4,11 @@ export function ChevronUpIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 12 12"
-      fill="none"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        d="M2.5 7.5L6 4L9.5 7.5"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M2.5 7.5H9.5L6 4L2.5 7.5Z" />
     </svg>
   );
 }
@@ -23,17 +17,11 @@ export function ChevronDownIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 12 12"
-      fill="none"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        d="M2.5 4.5L6 8L9.5 4.5"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M2.5 4.5H9.5L6 8L2.5 4.5Z" />
     </svg>
   );
 }

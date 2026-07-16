@@ -43,12 +43,14 @@ export function useBundleBuilderActions(products: Product[], steps: StepInfo[]) 
             const activeVariantId = product.variants?.length
               ? cart.activeVariantFor(product.id)
               : undefined;
+            const min = product.required ? 1 : 0;
+            const max = product.maxQuantity;
             return {
               product,
               quantity: cart.quantityFor(product.id, activeVariantId),
               activeVariantId,
-              onIncrement: () => cart.increment(product.id, activeVariantId),
-              onDecrement: () => cart.decrement(product.id, activeVariantId),
+              onIncrement: () => cart.increment(product.id, activeVariantId, min, max),
+              onDecrement: () => cart.decrement(product.id, activeVariantId, min, max),
               onSelectVariant: product.variants?.length
                 ? (variantId: string) => cart.selectVariant(product.id, variantId)
                 : undefined,

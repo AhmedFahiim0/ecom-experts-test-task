@@ -40,12 +40,7 @@
   --radius-thumb: 5px;
   --radius-btn: 7px;
   --radius-lg: 10px;
-
-  /* Fonts — Gilroy / TT Norms Pro are proprietary and unavailable to embed,
-     fall back to metrics-compatible sans-serifs */
-  --font-sans: "Gilroy", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-checkout:
-    "TT Norms Pro", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-gilroy: "Gilroy", "Inter", ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale, overridden to match the Figma px values exactly */
   --text-xs: 10px;
@@ -65,7 +60,7 @@
     @apply leading-[130%];
   }
   body {
-    @apply bg-surface text-text font-sans antialiased;
+    @apply bg-surface text-text font-gilroy antialiased;
   }
 
   button {
