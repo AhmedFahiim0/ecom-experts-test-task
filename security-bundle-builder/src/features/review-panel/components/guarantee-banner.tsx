@@ -6,7 +6,7 @@ export function GuaranteeBanner({
   guarantee: BundleData["guarantee"];
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-dashed border-brand/30 bg-page p-3">
+    <div className="flex items-center gap-4 rounded-lg bg-page p-3">
       <img
         src="/products/satisfaction-badge.png"
         alt=""
