@@ -1,7 +1,7 @@
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icons";
-import { ProductCard } from "@/components/shared/product-card";
+import { ProductCard } from "@/components/shared/product-card/version-1";
 import type { Product, StepId } from "@/types";
 
 export interface AccordionStepProduct {

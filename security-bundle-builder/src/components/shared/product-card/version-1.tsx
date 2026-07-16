@@ -3,8 +3,8 @@ import { cn } from "@/utils/cn";
 import { formatCurrency } from "@/utils/format-currency";
 import { Badge } from "@/components/ui/badge";
 import { CountControl } from "@/components/shared/count-control";
-import { VariantSelector } from "./variant-selector";
 import type { Product } from "@/types";
+import { VariantSelector } from "./variant-selector";
 
 const cardVariants = cva(
   "flex items-center gap-[19px] rounded-lg bg-surface p-[11px] transition-[border-color]",
