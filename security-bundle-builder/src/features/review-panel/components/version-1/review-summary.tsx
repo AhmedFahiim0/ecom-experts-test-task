@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/format-currency";
 import { Button } from "@/components/ui/button";
 import type { BundleData } from "@/types";
-import type { ReviewTotals } from "../types";
+import type { ReviewTotals } from "../../types";
 import { Badge } from "@/components/ui/badge";
 
 export interface ReviewSummaryProps {

@@ -7,7 +7,7 @@ import type { Product } from "@/types";
 import { VariantSelector } from "./variant-selector";
 
 const cardVariants = cva(
-  "flex items-center gap-[19px] rounded-lg bg-surface p-[11px] transition-[border-color]",
+  "flex h-full flex-col rounded-lg bg-surface p-[15px] transition-[border-color]",
   {
     variants: {
       selected: {
@@ -42,61 +42,9 @@ export function ProductCard({
 }: ProductCardProps) {
   const selected = quantity > 0;
   const min = product.required ? 1 : 0;
+
   return (
-    <div
-      className={cn(
-        "relative lg:basis-[361.5px] ",
-        cardVariants({ selected }),
-        className,
-      )}
-    >
-      <img
-        src={product.image}
-        alt={product.name}
-        className="h-[137px] w-[101px] rounded-thumb object-cover"
-      />
-
-      <div className="flex flex-1 flex-col justify-between gap-2">
-        <div>
-          <h3 className="tracking-wide text-text leading-[100%] font-semibold">
-            {product.name}
-          </h3>
-          <p className="text-sm leading-[1.3] text-text-secondary mt-2 mb-[10px] line-clamp-3 font-medium">
-            {product.description}
-
-            <span className="ms-1 link-inline cursor-pointer">Learn More</span>
-          </p>
-          {product.variants?.length ? (
-            <VariantSelector
-              variants={product.variants}
-              activeVariantId={activeVariantId}
-              onSelect={(variantId) => onSelectVariant?.(variantId)}
-            />
-          ) : null}
-        </div>
-
-        <div className="flex items-center justify-between leading-[100%]">
-          <CountControl
-            value={quantity}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-            min={min}
-            max={product.maxQuantity}
-            aria-label={product.name}
-          />
-          <div className="flex flex-col text-end">
-            {product.comparePrice !== product.price ? (
-              <span className="text-sale line-through">
-                {formatCurrency(product.comparePrice)}
-              </span>
-            ) : null}
-            <span className="text-text-price">
-              {product.priceLabel ?? formatCurrency(product.price)}
-            </span>
-          </div>
-        </div>
-      </div>
-
+    <div className={cn("relative", cardVariants({ selected }), className)}>
       {product.badge ? (
         <Badge
           variant="fullRounded"
@@ -105,6 +53,51 @@ export function ProductCard({
           {product.badge}
         </Badge>
       ) : null}
+
+      <img
+        src={product.image}
+        alt={product.name}
+        className="h-[150px] w-full object-contain"
+      />
+
+      <div className="flex flex-col gap-2">
+        <h3 className="tracking-wide text-text leading-[100%] font-semibold">
+          {product.name}
+        </h3>
+        <p className="text-sm leading-[1.3] text-text-secondary line-clamp-3 font-medium">
+          {product.description}
+
+          <span className="ms-1 link-inline cursor-pointer">Learn More</span>
+        </p>
+        {product.variants?.length ? (
+          <VariantSelector
+            variants={product.variants}
+            activeVariantId={activeVariantId}
+            onSelect={(variantId) => onSelectVariant?.(variantId)}
+          />
+        ) : null}
+      </div>
+
+      <div className="mt-auto flex items-center justify-between pt-3 leading-[100%]">
+        <CountControl
+          value={quantity}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+          min={min}
+          max={product.maxQuantity}
+          aria-label={product.name}
+        />
+        <div className="flex flex-col text-end">
+          {product.comparePrice !== product.price ? (
+            <span className="text-sale line-through">
+              {formatCurrency(product.comparePrice)}
+            </span>
+          ) : null}
+          <span className="text-text-price">
+            {product.priceLabel ?? formatCurrency(product.price)}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

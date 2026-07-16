@@ -1,7 +1,8 @@
+import type { ComponentType } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icons";
-import { ProductCard } from "@/components/shared/product-card/version-1";
+import type { ProductCardProps } from "@/components/shared/product-card/version-1";
 import type { Product, StepId } from "@/types";
 
 export interface AccordionStepProduct {
@@ -28,6 +29,8 @@ export interface AccordionProps {
   onToggleStep: (stepId: StepId) => void;
   onNext: (nextStepId: StepId) => void;
   className?: string;
+  ProductCard: ComponentType<ProductCardProps>;
+  productsGridClassName?: string;
 }
 
 export function Accordion({
@@ -36,6 +39,8 @@ export function Accordion({
   onToggleStep,
   onNext,
   className,
+  ProductCard,
+  productsGridClassName,
 }: AccordionProps) {
   return (
     <div className={cn("flex flex-col rounded-lg", className)}>
@@ -100,7 +105,12 @@ export function Accordion({
             >
               <div className="overflow-hidden" inert={!isOpen}>
                 <div className="flex flex-col gap-4 px-[15px] pb-5">
-                  <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-[15px]">
+                  <div
+                    className={
+                      productsGridClassName ??
+                      "flex flex-col lg:flex-row flex-wrap justify-center gap-[15px]"
+                    }
+                  >
                     {step.products.map((entry) => (
                       <ProductCard
                         key={entry.product.id}

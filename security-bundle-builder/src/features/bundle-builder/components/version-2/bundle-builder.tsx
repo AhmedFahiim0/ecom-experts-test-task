@@ -1,6 +1,7 @@
 import { Accordion } from "@/components/shared/accordion";
-import { useBundleBuilderActions } from "../helpers/use-actions";
-import type { BundleBuilderProps } from "../types";
+import { ProductCard } from "@/components/shared/product-card/version-2";
+import { useBundleBuilderActions } from "../../helpers/use-actions";
+import type { BundleBuilderProps } from "../../types";
 
 export function BundleBuilder({
   steps,
@@ -17,6 +18,8 @@ export function BundleBuilder({
       onToggleStep={toggleStep}
       onNext={goNext}
       className={className}
+      ProductCard={ProductCard}
+      productsGridClassName="grid grid-cols-2 sm:grid-cols-3 gap-[15px]"
     />
   );
 }

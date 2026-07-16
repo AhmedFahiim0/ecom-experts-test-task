@@ -1,9 +1,9 @@
 import { cn } from "@/utils/cn";
-import { useReviewPanelActions } from "../helpers/use-actions";
+import { useReviewPanelActions } from "../../helpers/use-actions";
 import { ReviewLineItemRow } from "./review-line-item";
 import { ReviewSummary } from "./review-summary";
 import { ShippingRow } from "./shipping-row";
-import type { ReviewPanelProps } from "../types";
+import type { ReviewPanelProps } from "../../types";
 
 export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
   const { groups, totals, saveForLater, checkout } = useReviewPanelActions(
