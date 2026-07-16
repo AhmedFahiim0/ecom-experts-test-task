@@ -92,35 +92,42 @@ export function Accordion({
               </div>
             </button>
 
-            {isOpen ? (
-              <div className="flex flex-col gap-4 px-[15px] pb-5">
-                <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-[15px]">
-                  {step.products.map((entry) => (
-                    <ProductCard
-                      key={entry.product.id}
-                      product={entry.product}
-                      quantity={entry.quantity}
-                      activeVariantId={entry.activeVariantId}
-                      onIncrement={entry.onIncrement}
-                      onDecrement={entry.onDecrement}
-                      onSelectVariant={entry.onSelectVariant}
-                    />
-                  ))}
-                </div>
+            <div
+              className={cn(
+                "grid transition-[grid-template-rows] duration-300 ease-in-out",
+                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+              )}
+            >
+              <div className="overflow-hidden" inert={!isOpen}>
+                <div className="flex flex-col gap-4 px-[15px] pb-5">
+                  <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-[15px]">
+                    {step.products.map((entry) => (
+                      <ProductCard
+                        key={entry.product.id}
+                        product={entry.product}
+                        quantity={entry.quantity}
+                        activeVariantId={entry.activeVariantId}
+                        onIncrement={entry.onIncrement}
+                        onDecrement={entry.onDecrement}
+                        onSelectVariant={entry.onSelectVariant}
+                      />
+                    ))}
+                  </div>
 
-                {nextStep && step.nextLabel ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    radius="btn"
-                    onClick={() => onNext(nextStep.id)}
-                    className="w-fit mx-auto "
-                  >
-                    {step.nextLabel}
-                  </Button>
-                ) : null}
+                  {nextStep && step.nextLabel ? (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      radius="btn"
+                      onClick={() => onNext(nextStep.id)}
+                      className="w-fit mx-auto "
+                    >
+                      {step.nextLabel}
+                    </Button>
+                  ) : null}
+                </div>
               </div>
-            ) : null}
+            </div>
           </div>
         );
       })}

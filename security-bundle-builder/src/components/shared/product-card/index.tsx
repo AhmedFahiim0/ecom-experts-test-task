@@ -84,7 +84,7 @@ export function ProductCard({
             max={product.maxQuantity}
             aria-label={product.name}
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col text-end">
             {product.comparePrice !== product.price ? (
               <span className="text-sale line-through">
                 {formatCurrency(product.comparePrice)}
