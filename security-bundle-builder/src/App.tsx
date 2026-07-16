@@ -6,7 +6,7 @@ import {
   BundleBuilderV2,
   getBundleData,
 } from "@/features/bundle-builder";
-import { ReviewPanelV1, ReviewPanelV2 } from "@/features/review-panel";
+import { ReviewPanel } from "@/features/review-panel";
 import type { BundleData } from "@/types";
 
 function App() {
@@ -22,7 +22,6 @@ function App() {
   }
 
   const BundleBuilder = version === 1 ? BundleBuilderV1 : BundleBuilderV2;
-  const ReviewPanel = version === 1 ? ReviewPanelV1 : ReviewPanelV2;
 
   return (
     <CartProvider products={bundle.products}>

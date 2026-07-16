@@ -14,9 +14,14 @@ const cardVariants = cva(
         true: "border-2 border-brand-border",
         false: "border-2 border-transparent",
       },
+      structure: {
+        versionOne: "flex-row",
+        versionTwo: "flex-col",
+      },
     },
     defaultVariants: {
       selected: false,
+      structure: "versionOne",
     },
   },
 );
@@ -45,7 +50,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "relative lg:basis-[361.5px] ",
+        "relative md:basis-[361.5px]",
         cardVariants({ selected }),
         className,
       )}

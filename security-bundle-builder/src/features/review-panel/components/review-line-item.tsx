@@ -1,7 +1,7 @@
 import { CountControl } from "@/components/shared/count-control";
 import { ProductRow } from "@/components/shared/product-row";
 import { PriceBlock } from "@/components/shared/price-block";
-import type { ReviewLineItem } from "../../types";
+import type { ReviewLineItem } from "../types";
 
 export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
   const { product, quantity, lineTotal, lineCompareTotal, hasAddControl, onIncrement, onDecrement } = item;

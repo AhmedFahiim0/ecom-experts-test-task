@@ -1,5 +1,5 @@
 import { Accordion } from "@/components/shared/accordion";
-import { ProductCard } from "@/components/shared/product-card/version-1";
+import { ProductCard } from "@/components/shared/product-card";
 import { useBundleBuilderActions } from "../../helpers/use-actions";
 import type { BundleBuilderProps } from "../../types";
 
