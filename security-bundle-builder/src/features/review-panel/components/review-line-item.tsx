@@ -4,11 +4,23 @@ import { PriceBlock } from "@/components/shared/price-block";
 import type { ReviewLineItem } from "../types";
 
 export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
-  const { product, quantity, lineTotal, lineCompareTotal, hasAddControl, onIncrement, onDecrement } = item;
+  const {
+    product,
+    quantity,
+    lineTotal,
+    lineCompareTotal,
+    hasAddControl,
+    onIncrement,
+    onDecrement,
+  } = item;
   const min = product.required ? 1 : 0;
 
   return (
-    <ProductRow image={product.image} imageAlt={product.name} label={product.name}>
+    <ProductRow
+      image={product.image}
+      imageAlt={product.name}
+      label={product.name}
+    >
       <div className="flex items-center gap-4">
         {hasAddControl ? (
           <CountControl

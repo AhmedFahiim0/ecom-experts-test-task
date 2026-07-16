@@ -30,7 +30,7 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
           {groups.map((group) => (
             <div
               key={group.category}
-              className="flex flex-col gap-3 border-t border-border-divider pt-[15px] pb-[10px]"
+              className="flex flex-col gap-2 border-t border-border-divider pt-[15px] pb-[10px]"
             >
               <span className="text-sm font-medium uppercase tracking-label text-text-label">
                 {group.label}
