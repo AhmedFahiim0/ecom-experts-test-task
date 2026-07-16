@@ -1,7 +1,7 @@
 import { CountControl } from "@/components/shared/count-control";
 import { ProductRow } from "@/components/shared/product-row";
 import { PriceBlock } from "@/components/shared/price-block";
-import type { ReviewLineItem } from "../types";
+import type { ReviewLineItem } from "../../features/review-panel/types";
 
 export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
   const {
@@ -13,6 +13,7 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
     onIncrement,
     onDecrement,
   } = item;
+
   const min = product.required ? 1 : 0;
 
   return (

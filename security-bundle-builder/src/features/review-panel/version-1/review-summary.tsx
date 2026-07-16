@@ -1,9 +1,8 @@
 import { formatCurrency } from "@/utils/format-currency";
-import { Button } from "@/components/ui/button";
-import { GuaranteeBanner } from "@/features/review-panel/components/guarantee-banner";
 import type { BundleData } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import type { ReviewTotals } from "../types";
+import ReviewPanelFooter from "@/components/shared/review-footer";
 
 export interface ReviewSummaryProps {
   bundle: BundleData;
@@ -43,24 +42,11 @@ export function ReviewSummary({
         </div>
       </div>
 
-      {totals.savings > 0 ? (
-        <p className="text-center text-sm font-semibold text-success mt-[14px] mb-1">
-          Congrats! You&rsquo;re saving {formatCurrency(totals.savings)} on your
-          security bundle!
-        </p>
-      ) : null}
-
-      <Button variant="filled" radius="md" fullWidth onClick={onCheckout}>
-        Checkout
-      </Button>
-
-      <Button
-        variant="underline"
-        onClick={onSaveForLater}
-        className="w-full text-center mt-2 leading-[120%]"
-      >
-        Save my system for later
-      </Button>
+      <ReviewPanelFooter
+        savings={totals.savings}
+        onCheckout={onCheckout}
+        onSaveForLater={onSaveForLater}
+      />
     </section>
   );
 }

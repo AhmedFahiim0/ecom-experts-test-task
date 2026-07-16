@@ -16,7 +16,7 @@ export function ProductRow({
 }) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <div className="h-[41px] w-[41px] bg-surface p-1 rounded-thumb">
+      <div className="size-[41px] bg-surface p-1 rounded-thumb">
         <img
           src={image}
           alt={imageAlt ?? ""}
