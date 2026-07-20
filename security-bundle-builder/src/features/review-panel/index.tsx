@@ -1,10 +1,10 @@
 import { cn } from "@/utils/cn";
-import { ReviewLineItemRow } from "../../../components/shared/review-line-item";
-import { ReviewSummary } from "./review-summary";
-import { ShippingRow } from "../../../components/shared/shipping-row";
-import type { ReviewPanelProps } from "../types";
-import { useReviewPanelActions } from "../helpers/use-actions";
-import ReviewPanelHeader from "@/components/shared/review-panel-header";
+import ReviewPanelHeader from "./components/review-header";
+import type { ReviewPanelProps } from "./types";
+import { useReviewPanelActions } from "./helpers/use-actions";
+import ShippingRow from "./components/shipping-row";
+import ReviewSummary from "./components/review-summary";
+import ReviewProduct from "./components/review-product";
 
 export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
   const { groups, totals, saveForLater, checkout } = useReviewPanelActions(
@@ -30,7 +30,7 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
               </span>
               <div className="flex flex-col gap-3">
                 {group.items.map((item) => (
-                  <ReviewLineItemRow key={item.key} item={item} />
+                  <ReviewProduct key={item.key} item={item} />
                 ))}
               </div>
             </div>

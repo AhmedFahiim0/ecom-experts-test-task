@@ -1,21 +1,28 @@
 import { useCallback, useMemo, useState } from "react";
 import { useCart } from "@/context/cart-context";
-import type { AccordionStepData } from "@/components/shared/accordion";
 import type { Product, StepId, StepInfo } from "@/types";
+import type { AccordionStepData } from "../components/products-list";
 
 function isProductSelected(
   product: Product,
   quantityFor: (productId: string, variantId?: string) => number,
 ) {
   if (product.variants?.length) {
-    return product.variants.some((variant) => quantityFor(product.id, variant.id) > 0);
+    return product.variants.some(
+      (variant) => quantityFor(product.id, variant.id) > 0,
+    );
   }
   return quantityFor(product.id) > 0;
 }
 
-export function useBundleBuilderActions(products: Product[], steps: StepInfo[]) {
+export function useBundleBuilderActions(
+  products: Product[],
+  steps: StepInfo[],
+) {
   const cart = useCart();
-  const [openStepId, setOpenStepId] = useState<StepId | null>(steps[0]?.id ?? null);
+  const [openStepId, setOpenStepId] = useState<StepId | null>(
+    steps[0]?.id ?? null,
+  );
 
   const toggleStep = useCallback((stepId: StepId) => {
     setOpenStepId((current) => (current === stepId ? null : stepId));
@@ -28,7 +35,9 @@ export function useBundleBuilderActions(products: Product[], steps: StepInfo[]) 
   const accordionSteps = useMemo<AccordionStepData[]>(
     () =>
       steps.map((step) => {
-        const stepProducts = products.filter((product) => product.stepId === step.id);
+        const stepProducts = products.filter(
+          (product) => product.stepId === step.id,
+        );
         const selectedCount = stepProducts.filter((product) =>
           isProductSelected(product, cart.quantityFor),
         ).length;
@@ -49,10 +58,13 @@ export function useBundleBuilderActions(products: Product[], steps: StepInfo[]) 
               product,
               quantity: cart.quantityFor(product.id, activeVariantId),
               activeVariantId,
-              onIncrement: () => cart.increment(product.id, activeVariantId, min, max),
-              onDecrement: () => cart.decrement(product.id, activeVariantId, min, max),
+              onIncrement: () =>
+                cart.increment(product.id, activeVariantId, min, max),
+              onDecrement: () =>
+                cart.decrement(product.id, activeVariantId, min, max),
               onSelectVariant: product.variants?.length
-                ? (variantId: string) => cart.selectVariant(product.id, variantId)
+                ? (variantId: string) =>
+                    cart.selectVariant(product.id, variantId)
                 : undefined,
             };
           }),

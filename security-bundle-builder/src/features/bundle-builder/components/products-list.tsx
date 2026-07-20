@@ -2,8 +2,8 @@ import type { ComponentType } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui/button";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icons";
-import type { ProductCardProps } from "@/components/shared/product-card";
 import type { Product, StepId } from "@/types";
+import type { ProductCardProps } from "./product-card";
 
 export interface AccordionStepProduct {
   product: Product;

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
-export function ProductRow({
+export default function ReviewRow({
   image,
   imageAlt,
   label,

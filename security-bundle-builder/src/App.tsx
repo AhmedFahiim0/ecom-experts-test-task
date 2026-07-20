@@ -4,7 +4,7 @@ import { CartProvider } from "@/context/cart-context";
 import { getBundleData } from "@/features/bundle-builder";
 import { ReviewPanel } from "@/features/review-panel";
 import type { BundleData } from "@/types";
-import { BundleBuilder } from "./features/bundle-builder/components/bundle-builder";
+import { BundleBuilder } from "./features/bundle-builder";
 
 function App() {
   const [bundle, setBundle] = useState<BundleData | null>(null);

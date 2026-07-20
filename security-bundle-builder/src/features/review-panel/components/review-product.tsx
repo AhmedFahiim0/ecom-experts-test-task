@@ -1,9 +1,9 @@
 import { CountControl } from "@/components/shared/count-control";
-import { ProductRow } from "@/components/shared/product-row";
+import ReviewRow from "./review-row";
+import type { ReviewLineItem } from "../types";
 import { PriceBlock } from "@/components/shared/price-block";
-import type { ReviewLineItem } from "../../features/review-panel/types";
 
-export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
+export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
   const {
     product,
     quantity,
@@ -17,7 +17,7 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
   const min = product.required ? 1 : 0;
 
   return (
-    <ProductRow
+    <ReviewRow
       image={product.image}
       imageAlt={product.name}
       label={product.name}
@@ -42,6 +42,6 @@ export function ReviewLineItemRow({ item }: { item: ReviewLineItem }) {
           suffix={product.stepId === "plan" ? "/mo" : ""}
         />
       </div>
-    </ProductRow>
+    </ReviewRow>
   );
 }

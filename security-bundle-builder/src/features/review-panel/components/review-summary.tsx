@@ -2,7 +2,7 @@ import { formatCurrency } from "@/utils/format-currency";
 import type { BundleData } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import type { ReviewTotals } from "../types";
-import ReviewPanelFooter from "@/components/shared/review-footer";
+import ReviewPanelFooter from "./review-footer";
 
 export interface ReviewSummaryProps {
   bundle: BundleData;
@@ -11,7 +11,7 @@ export interface ReviewSummaryProps {
   onSaveForLater: () => void;
 }
 
-export function ReviewSummary({
+export default function ReviewSummary({
   bundle,
   totals,
   onCheckout,

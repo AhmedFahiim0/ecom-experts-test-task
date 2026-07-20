@@ -1,14 +1,14 @@
-import { ProductRow } from "@/components/shared/product-row";
 import { PriceBlock } from "@/components/shared/price-block";
 import type { BundleData } from "@/types";
+import ReviewRow from "./review-row";
 
-export function ShippingRow({
+export default function ShippingRow({
   shipping,
 }: {
   shipping: BundleData["shipping"];
 }) {
   return (
-    <ProductRow
+    <ReviewRow
       image={shipping.icon}
       label={shipping.label}
       className="border-t border-border-divider pt-[15px] pb-[10px]"
@@ -19,6 +19,6 @@ export function ShippingRow({
         priceLabel={shipping.priceLabel}
         className="text-sm md:text-base"
       />
-    </ProductRow>
+    </ReviewRow>
   );
 }

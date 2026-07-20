@@ -1,7 +1,7 @@
-import { Accordion } from "@/components/shared/accordion";
-import { ProductCard } from "@/components/shared/product-card";
-import { useBundleBuilderActions } from "../helpers/use-actions";
-import type { BundleBuilderProps } from "../types";
+import { useBundleBuilderActions } from "./helpers/use-actions";
+import type { BundleBuilderProps } from "./types";
+import { ProductCard } from "./components/product-card";
+import { Accordion } from "./components/products-list";
 
 export function BundleBuilder({
   steps,
