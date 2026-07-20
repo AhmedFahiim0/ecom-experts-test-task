@@ -1,37 +1,17 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useReducer,
   type ReactNode,
 } from "react";
 import { cartReducer } from "./cart-reducer";
 import { cartKey, type CartState, type Product } from "@/types";
-import { readStorage, writeStorage } from "@/utils/storage";
-
-const STORAGE_KEY = "security-bundle-builder:cart";
-
-function buildDefaultState(products: Product[]): CartState {
-  const state: CartState = { quantities: {}, activeVariant: {}, savedAt: null };
-  for (const product of products) {
-    if (product.variants?.length) {
-      state.activeVariant[product.id] =
-        product.defaultVariantId ?? product.variants[0].id;
-    }
-    if (product.defaultQuantity) {
-      const variantId = product.variants?.length
-        ? (product.defaultVariantId ?? product.variants[0].id)
-        : undefined;
-      state.quantities[cartKey(product.id, variantId)] =
-        product.defaultQuantity;
-    }
-  }
-  return state;
-}
+import { getCartFromStorage } from "@/utils/storage";
+import { buildDefaultCart, STORAGE_KEY } from "@/utils/build-default-cart";
 
 interface CartContextValue {
-  state: CartState;
+  cart: CartState;
   increment: (
     productId: string,
     variantId?: string,
@@ -67,20 +47,14 @@ export function CartProvider({
   products: Product[];
   children: ReactNode;
 }) {
-  const [state, dispatch] = useReducer(cartReducer, undefined, () => {
-    const saved = readStorage<CartState>(STORAGE_KEY);
-    return saved ?? buildDefaultState(products);
+  const [cart, dispatch] = useReducer(cartReducer, undefined, () => {
+    const saved = getCartFromStorage<CartState>(STORAGE_KEY);
+    return saved ?? buildDefaultCart(products);
   });
-
-  useEffect(() => {
-    if (state.savedAt) {
-      writeStorage(STORAGE_KEY, state);
-    }
-  }, [state]);
 
   const value = useMemo<CartContextValue>(
     () => ({
-      state,
+      cart,
       increment: (productId, variantId, min, max) =>
         dispatch({ type: "INCREMENT", productId, variantId, min, max }),
       decrement: (productId, variantId, min, max) =>
@@ -98,18 +72,21 @@ export function CartProvider({
         dispatch({ type: "SELECT_VARIANT", productId, variantId }),
       save: () => dispatch({ type: "SAVE" }),
       quantityFor: (productId, variantId) =>
-        state.quantities[cartKey(productId, variantId)] ?? 0,
-      activeVariantFor: (productId) => state.activeVariant[productId],
-      hasSavedSystem: state.savedAt !== null,
+        cart.quantities[cartKey(productId, variantId)] ?? 0,
+      activeVariantFor: (productId) => cart.activeVariant[productId],
+      hasSavedSystem: cart.savedAt !== null,
     }),
-    [state],
+    [cart],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used within a CartProvider");
-  return ctx;
+  const cartContext = useContext(CartContext);
+
+  if (!cartContext)
+    throw new Error("useCart must be used within a CartProvider");
+
+  return cartContext;
 }

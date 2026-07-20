@@ -1,7 +1,6 @@
-import type { Product, StepInfo } from "@/types";
+import type { Product } from "@/types";
 
 export interface BundleBuilderProps {
-  steps: StepInfo[];
   products: Product[];
   className?: string;
 }

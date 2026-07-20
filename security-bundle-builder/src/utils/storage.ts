@@ -1,4 +1,4 @@
-export function readStorage<T>(key: string): T | null {
+export function getCartFromStorage<T>(key: string): T | null {
   try {
     const raw = localStorage.getItem(key);
     return raw ? (JSON.parse(raw) as T) : null;
@@ -7,18 +7,14 @@ export function readStorage<T>(key: string): T | null {
   }
 }
 
-export function writeStorage<T>(key: string, value: T) {
+export function saveCartInStorage<T>(key: string, value: T) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // storage unavailable (private mode, quota, etc.) — fail silently
-  }
+  } catch {}
 }
 
 export function clearStorage(key: string) {
   try {
     localStorage.removeItem(key);
-  } catch {
-    // ignore
-  }
+  } catch {}
 }

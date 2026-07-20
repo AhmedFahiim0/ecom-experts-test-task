@@ -4,12 +4,11 @@ import { ProductCard } from "./components/product-card";
 import ProductsList from "./components/products-list";
 
 export function BundleBuilder({
-  steps,
   products,
   className,
 }: BundleBuilderProps) {
   const { openStepId, toggleStep, goNext, accordionSteps } =
-    useBundleBuilderActions(products, steps);
+    useBundleBuilderActions(products);
 
   return (
     <ProductsList

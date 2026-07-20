@@ -1,30 +1,4 @@
 {
-  "steps": [
-    {
-      "id": "cameras",
-      "title": "Choose your cameras",
-      "icon": "/icons/icon-camera.svg",
-      "nextLabel": "Next: Choose your plan"
-    },
-    {
-      "id": "plan",
-      "title": "Choose your plan",
-      "icon": "/icons/icon-plan.svg",
-      "nextLabel": "Next: Choose your sensors"
-    },
-    {
-      "id": "sensors",
-      "title": "Choose your sensors",
-      "icon": "/icons/icon-sensor.svg",
-      "nextLabel": "Next: Add extra protection"
-    },
-    {
-      "id": "protection",
-      "title": "Add extra protection",
-      "icon": "/icons/icon-shield.svg"
-    }
-  ],
-  "financingLabel": "as low as $19.19/mo",
   "shipping": {
     "label": "Fast Shipping",
     "comparePrice": 5.99,
@@ -32,10 +6,7 @@
     "priceLabel": "FREE",
     "icon": "/icons/icon-shipping.svg"
   },
-  "guarantee": {
-    "heading": "30-day hassle-free returns",
-    "body": "If you're not totally in love with the product, we will refund you 100%."
-  },
+
   "products": [
     {
       "id": "wyze-cam-v4",

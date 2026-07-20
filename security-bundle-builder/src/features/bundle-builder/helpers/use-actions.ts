@@ -3,23 +3,35 @@ import { useCart } from "@/context/cart-context";
 import type { Product, StepId, StepInfo } from "@/types";
 import type { AccordionStepData } from "../components/products-list";
 
-function isProductSelected(
-  product: Product,
-  quantityFor: (productId: string, variantId?: string) => number,
-) {
-  if (product.variants?.length) {
-    return product.variants.some(
-      (variant) => quantityFor(product.id, variant.id) > 0,
-    );
-  }
-  return quantityFor(product.id) > 0;
-}
+const steps: StepInfo[] = [
+  {
+    id: "cameras",
+    title: "Choose your cameras",
+    icon: "/icons/icon-camera.svg",
+    nextLabel: "Next: Choose your plan",
+  },
+  {
+    id: "plan",
+    title: "Choose your plan",
+    icon: "/icons/icon-plan.svg",
+    nextLabel: "Next: Choose your sensors",
+  },
+  {
+    id: "sensors",
+    title: "Choose your sensors",
+    icon: "/icons/icon-sensor.svg",
+    nextLabel: "Next: Add extra protection",
+  },
+  {
+    id: "protection",
+    title: "Add extra protection",
+    icon: "/icons/icon-shield.svg",
+  },
+];
 
-export function useBundleBuilderActions(
-  products: Product[],
-  steps: StepInfo[],
-) {
+export function useBundleBuilderActions(products: Product[]) {
   const cart = useCart();
+
   const [openStepId, setOpenStepId] = useState<StepId | null>(
     steps[0]?.id ?? null,
   );
@@ -74,4 +86,16 @@ export function useBundleBuilderActions(
   );
 
   return { openStepId, toggleStep, goNext, accordionSteps };
+}
+
+function isProductSelected(
+  product: Product,
+  quantityFor: (productId: string, variantId?: string) => number,
+) {
+  if (product.variants?.length) {
+    return product.variants.some(
+      (variant) => quantityFor(product.id, variant.id) > 0,
+    );
+  }
+  return quantityFor(product.id) > 0;
 }

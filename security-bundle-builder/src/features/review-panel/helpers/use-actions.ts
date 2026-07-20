@@ -5,7 +5,13 @@ import { submitCheckout } from "../api/checkout";
 import type { ReviewGroup, ReviewLineItem, ReviewTotals } from "../types";
 import type { Product, ProductCategory } from "@/types";
 
-const CATEGORY_ORDER: ProductCategory[] = ["camera", "sensor", "accessory", "plan"];
+const CATEGORY_ORDER: ProductCategory[] = [
+  "camera",
+  "sensor",
+  "accessory",
+  "plan",
+];
+
 const CATEGORY_LABELS: Record<ProductCategory, string> = {
   camera: "Cameras",
   sensor: "Sensors",
@@ -20,7 +26,9 @@ export function useReviewPanelActions(products: Product[]) {
     const items: ReviewLineItem[] = [];
 
     for (const product of products) {
-      const variants = product.variants?.length ? product.variants : [undefined];
+      const variants = product.variants?.length
+        ? product.variants
+        : [undefined];
       for (const variant of variants) {
         const quantity = cart.quantityFor(product.id, variant?.id);
         if (quantity <= 0) continue;
@@ -56,7 +64,10 @@ export function useReviewPanelActions(products: Product[]) {
   );
 
   const totals = useMemo<ReviewTotals>(() => {
-    const compareTotal = lineItems.reduce((sum, item) => sum + item.lineCompareTotal, 0);
+    const compareTotal = lineItems.reduce(
+      (sum, item) => sum + item.lineCompareTotal,
+      0,
+    );
     const total = lineItems.reduce((sum, item) => sum + item.lineTotal, 0);
     return { compareTotal, total, savings: compareTotal - total };
   }, [lineItems]);
@@ -69,9 +80,17 @@ export function useReviewPanelActions(products: Product[]) {
   const checkout = useCallback(async () => {
     const result = await submitCheckout();
     if (result.success) {
-      toast.success("This is a prototype — checkout isn't wired up, but your order is all set!");
+      toast.success(
+        "This is a prototype — checkout isn't wired up, but your order is all set!",
+      );
     }
   }, []);
 
-  return { groups, totals, saveForLater, checkout, hasSavedSystem: cart.hasSavedSystem };
+  return {
+    groups,
+    totals,
+    saveForLater,
+    checkout,
+    hasSavedSystem: cart.hasSavedSystem,
+  };
 }

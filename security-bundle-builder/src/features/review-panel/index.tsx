@@ -40,7 +40,6 @@ export function ReviewPanel({ bundle, className }: ReviewPanelProps) {
         <ShippingRow shipping={bundle.shipping} />
 
         <ReviewSummary
-          bundle={bundle}
           totals={totals}
           onCheckout={checkout}
           onSaveForLater={saveForLater}

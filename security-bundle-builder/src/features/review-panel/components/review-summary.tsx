@@ -1,4 +1,3 @@
-import { formatCurrency } from "@/utils/format-currency";
 import type { BundleData } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import type { ReviewTotals } from "../types";
@@ -6,14 +5,12 @@ import ReviewPanelFooter from "./review-footer";
 import { Price } from "@/components/shared/price";
 
 export interface ReviewSummaryProps {
-  bundle: BundleData;
   totals: ReviewTotals;
   onCheckout: () => void;
   onSaveForLater: () => void;
 }
 
 export default function ReviewSummary({
-  bundle,
   totals,
   onCheckout,
   onSaveForLater,
@@ -32,7 +29,7 @@ export default function ReviewSummary({
             variant={"normalRounded"}
             className="px-2 py-[5px] font-gilroy-medium"
           >
-            {bundle.financingLabel}
+            as low as $19.19/mo
           </Badge>
 
           <div className="flex gap-2 items-baseline justify-between mt-2">
