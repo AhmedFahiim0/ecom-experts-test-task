@@ -90,6 +90,7 @@ export function ProductCard({
             min={min}
             max={product.maxQuantity}
             aria-label={product.name}
+            location="product"
           />
           <div className="flex flex-col">
             {product.comparePrice !== product.price ? (

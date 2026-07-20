@@ -20,9 +20,10 @@ export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
             value={quantity}
             onIncrement={onIncrement}
             onDecrement={onDecrement}
-            min={min}
             max={product.maxQuantity}
             aria-label={product.name}
+            location="review"
+            min={min}
           />
         ) : null}
 
