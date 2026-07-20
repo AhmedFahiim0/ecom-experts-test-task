@@ -3,7 +3,7 @@ import { cn } from "@/utils/cn";
 import type { ProductVariant } from "@/types";
 
 const chipVariants = cva(
-  "flex h-[26px] w-[65px] items-center justify-center gap-1 rounded-xs border-[0.5px] border-border-subtle px-1 transition-colors font-medium",
+  "flex h-[26px] w-[65px] items-center justify-center gap-1 rounded-xs border-[0.5px] border-border-subtle px-1 transition-colors font-gilroy-medium",
   {
     variants: {
       chosen: {

@@ -208,7 +208,7 @@
       "image": "/icons/icon-plan.svg",
       "comparePrice": 12.99,
       "price": 9.99,
-      "priceLabel": "$9.99/mo",
+      "suffix": "/mo",
       "maxQuantity": 1,
       "defaultQuantity": 1
     }

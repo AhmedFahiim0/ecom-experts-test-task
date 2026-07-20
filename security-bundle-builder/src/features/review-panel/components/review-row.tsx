@@ -26,7 +26,7 @@ export default function ReviewRow({
       </div>
 
       <div className="flex flex-1 items-center justify-between">
-        <span className="md:text-base text-sm font-medium text-text-strong">
+        <span className="md:text-base text-sm text-text-strong font-gilroy-medium">
           {label}
         </span>
 

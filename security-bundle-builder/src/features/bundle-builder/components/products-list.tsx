@@ -33,7 +33,7 @@ export interface AccordionProps {
   productsGridClassName?: string;
 }
 
-export function Accordion({
+export default function ProductsList({
   steps,
   openStepId,
   onToggleStep,
@@ -63,7 +63,7 @@ export function Accordion({
             >
               <span
                 className={
-                  "block md:text-sm text-[10px] uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px] px-[15px] pt-[13px]"
+                  "block md:text-sm text-[10px] uppercase tracking-label text-text-muted border-b-[0.5px] pb-[5px] px-[15px] pt-[13px] font-gilroy-medium"
                 }
               >
                 Step {index + 1} of {steps.length}
@@ -77,12 +77,12 @@ export function Accordion({
                     aria-hidden
                     className="h-[26px] w-[26px]"
                   />
-                  <span className="md:text-xl text-lg font-semibold  text-text">
+                  <span className="md:text-xl text-lg text-text font-gilroy-semibold">
                     {step.title}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1 text-text-muted">
+                <div className="flex items-center gap-1 text-text-muted font-gilroy-medium">
                   {isOpen ? (
                     <>
                       <span className="text-base font-medium text-brand">
@@ -130,7 +130,7 @@ export function Accordion({
                       variant="outline"
                       radius="btn"
                       onClick={() => onNext(nextStep.id)}
-                      className="w-fit mx-auto "
+                      className="w-fit mx-auto font-gilroy-semibold"
                     >
                       {step.nextLabel}
                     </Button>

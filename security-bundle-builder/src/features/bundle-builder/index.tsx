@@ -1,7 +1,7 @@
 import { useBundleBuilderActions } from "./helpers/use-actions";
 import type { BundleBuilderProps } from "./types";
 import { ProductCard } from "./components/product-card";
-import { Accordion } from "./components/products-list";
+import ProductsList from "./components/products-list";
 
 export function BundleBuilder({
   steps,
@@ -12,7 +12,7 @@ export function BundleBuilder({
     useBundleBuilderActions(products, steps);
 
   return (
-    <Accordion
+    <ProductsList
       steps={accordionSteps}
       openStepId={openStepId}
       onToggleStep={toggleStep}

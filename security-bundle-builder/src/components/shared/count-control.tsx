@@ -3,17 +3,20 @@ import { cn } from "@/utils/cn";
 import { MinusIcon, PlusIcon } from "@/components/ui/icons";
 
 const stepperButtonVariants = cva(
-  "flex h-5 w-5 shrink-0 items-center justify-center rounded-md transition-colors",
+  "flex h-5 w-5 shrink-0 items-center justify-center rounded-md transition-colors font-gilroy-medium cursor-pointer",
   {
     variants: {
       state: {
-        enabled: "bg-bg-muted text-text-strong hover:border-brand/40",
-        disabled:
+        cart_enabled: "bg-bg-muted text-text-strong hover:border-brand/40",
+        cart_disabled:
+          "border-2 border-border-stepper border border-border-divider text-text-strike",
+        review_enabled: "bg-bg-muted text-text-strong hover:border-brand/40",
+        review_disabled:
           "border-2 border-border-stepper border border-border-divider text-text-strike",
       },
     },
     defaultVariants: {
-      state: "enabled",
+      state: "cart_enabled",
     },
   },
 );
@@ -58,7 +61,7 @@ export function CountControl({
       >
         <MinusIcon className="h-2 w-2" />
       </button>
-      <span className="min-w-4 text-center text-md font-medium text-text-strong">
+      <span className="min-w-4 text-center text-md font-gilroy-medium text-text-strong">
         {value}
       </span>
       <button

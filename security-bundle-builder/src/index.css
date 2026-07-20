@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "TT Norms Pro Bold";
+  src: url("./assets/fonts/TTNormsPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy Medium";
+  src: url("./assets/fonts/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy Regular";
+  src: url("./assets/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy SemiBold";
+  src: url("./assets/fonts/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy Bold";
+  src: url("./assets/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Brand */
   --color-brand: #4e2fd2;
@@ -40,6 +80,11 @@
   --radius-btn: 7px;
   --radius-lg: 10px;
   --font-gilroy: "Gilroy";
+  --font-norms-pro-bold: "TT Norms Pro Bold";
+  --font-gilroy-regular: "Gilroy Regular";
+  --font-gilroy-medium: "Gilroy Medium";
+  --font-gilroy-semibold: "Gilroy SemiBold";
+  --font-gilroy-bold: "Gilroy Bold";
 
   /* Type scale, overridden to match the Figma px values exactly */
   --text-xs: 10px;

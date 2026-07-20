@@ -8,6 +8,8 @@ const priceVariants = cva("", {
     size: {
       sm: "text-sm md:text-base",
       base: "text-md",
+      lg: "text-lg",
+      xxl: "text-2xl",
     },
     color: {
       base: "text-price",
@@ -18,16 +20,17 @@ const priceVariants = cva("", {
       true: "line-through",
     },
     fontWeight: {
-      base: "font-normal",
-      semibold: "font-semibold",
-      bold: "font-bold",
+      regular: "font-gilroy-regular",
+      medium: "font-gilroy-medium",
+      semibold: "font-gilroy-semibold",
+      bold: "font-gilroy-bold",
     },
   },
   defaultVariants: {
     size: "base",
     color: "base",
     strikethrough: false,
-    fontWeight: "base",
+    fontWeight: "regular",
   },
 });
 
@@ -36,6 +39,7 @@ export interface PriceProps
     Omit<HTMLAttributes<HTMLSpanElement>, "color">,
     VariantProps<typeof priceVariants> {
   value: number;
+  suffix?: string;
 }
 
 export function Price({
@@ -45,6 +49,7 @@ export function Price({
   fontWeight,
   strikethrough,
   className,
+  suffix,
   ...props
 }: PriceProps) {
   return (
@@ -56,6 +61,7 @@ export function Price({
       {...props}
     >
       {value === 0 ? "FREE" : formatCurrency(value)}
+      {suffix ? suffix : null}
     </span>
   );
 }

@@ -9,6 +9,7 @@ export interface ProductVariant {
 }
 
 export interface Product {
+  suffix: string | undefined;
   id: string;
   stepId: StepId;
   category: ProductCategory;
@@ -59,9 +60,30 @@ export interface CartState {
 }
 
 export type CartAction =
-  | { type: "INCREMENT"; productId: string; variantId?: string; step?: number; min?: number; max?: number }
-  | { type: "DECREMENT"; productId: string; variantId?: string; step?: number; min?: number; max?: number }
-  | { type: "SET_QUANTITY"; productId: string; variantId: string | undefined; quantity: number; min?: number; max?: number }
+  | {
+      type: "INCREMENT";
+      productId: string;
+      variantId?: string;
+      step?: number;
+      min?: number;
+      max?: number;
+    }
+  | {
+      type: "DECREMENT";
+      productId: string;
+      variantId?: string;
+      step?: number;
+      min?: number;
+      max?: number;
+    }
+  | {
+      type: "SET_QUANTITY";
+      productId: string;
+      variantId: string | undefined;
+      quantity: number;
+      min?: number;
+      max?: number;
+    }
   | { type: "SELECT_VARIANT"; productId: string; variantId: string }
   | { type: "SAVE" }
   | { type: "RESTORE"; state: CartState };

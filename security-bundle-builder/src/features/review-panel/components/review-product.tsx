@@ -4,14 +4,7 @@ import type { ReviewLineItem } from "../types";
 import { Price } from "@/components/shared/price";
 
 export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
-  const {
-    product,
-    quantity,
-
-    hasAddControl,
-    onIncrement,
-    onDecrement,
-  } = item;
+  const { product, quantity, hasAddControl, onIncrement, onDecrement } = item;
 
   const min = product.required ? 1 : 0;
 
@@ -39,8 +32,9 @@ export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
               value={product.comparePrice}
               color="base"
               size={"sm"}
-              fontWeight={"semibold"}
+              fontWeight={"medium"}
               strikethrough
+              suffix={product.suffix}
             />
           ) : null}
 
@@ -49,6 +43,7 @@ export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
             color={"brand"}
             size={"sm"}
             fontWeight={"semibold"}
+            suffix={product.suffix}
           />
         </div>
       </div>

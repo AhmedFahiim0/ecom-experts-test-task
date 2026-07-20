@@ -15,20 +15,26 @@ export default function ReviewPanelFooter({
   return (
     <>
       {savings > 0 ? (
-        <p className="text-center text-sm font-semibold text-success mt-[14px] mb-1">
+        <p className="text-center text-sm font-gilroy-semibold text-success mt-[14px] mb-1">
           Congrats! You&rsquo;re saving {formatCurrency(savings)} on your
           security bundle!
         </p>
       ) : null}
 
-      <Button variant="filled" radius="md" fullWidth onClick={onCheckout}>
+      <Button
+        variant="filled"
+        radius="md"
+        fullWidth
+        onClick={onCheckout}
+        className="font-norms-pro-bold"
+      >
         Checkout
       </Button>
 
       <Button
         variant="underline"
         onClick={onSaveForLater}
-        className="w-full text-center mt-2 leading-[120%]"
+        className="w-full text-center mt-2 leading-[120%] font-gilroy-regular italic"
       >
         Save my system for later
       </Button>

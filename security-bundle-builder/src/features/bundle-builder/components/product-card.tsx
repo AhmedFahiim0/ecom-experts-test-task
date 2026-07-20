@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
-import { formatCurrency } from "@/utils/format-currency";
 import { Badge } from "@/components/ui/badge";
 import { CountControl } from "@/components/shared/count-control";
 import type { Product } from "@/types";
@@ -66,10 +65,10 @@ export function ProductCard({
 
       <div className="flex flex-1 flex-col justify-between gap-2">
         <div>
-          <h3 className="tracking-wide text-text leading-[100%] font-semibold">
+          <h3 className="tracking-wide text-text leading-[100%] font-gilroy-semibold">
             {product.name}
           </h3>
-          <p className="text-sm leading-[1.3] text-text-secondary mt-2 mb-[10px] line-clamp-3 font-medium">
+          <p className="text-sm leading-[1.3] text-text-secondary mt-2 mb-[10px] line-clamp-3 font-gilroy-medium">
             {product.description}
 
             <span className="ms-1 link-inline cursor-pointer">Learn More</span>
@@ -94,10 +93,19 @@ export function ProductCard({
           />
           <div className="flex flex-col">
             {product.comparePrice !== product.price ? (
-              <Price value={product.comparePrice} color="sale" strikethrough />
+              <Price
+                value={product.comparePrice}
+                color="sale"
+                strikethrough
+                fontWeight={"regular"}
+              />
             ) : null}
 
-            <Price value={product.price} color={"base"} />
+            <Price
+              value={product.price}
+              color={"base"}
+              fontWeight={"regular"}
+            />
           </div>
         </div>
       </div>
@@ -105,7 +113,7 @@ export function ProductCard({
       {product.badge ? (
         <Badge
           variant="fullRounded"
-          className="absolute inset-s-[11px] top-[11px] z-10 px-[6px] py-0.5"
+          className="absolute inset-s-[11px] top-[11px] z-10 px-[6px] py-0.5 font-gilroy-semibold"
         >
           {product.badge}
         </Badge>
