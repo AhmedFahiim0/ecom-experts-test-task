@@ -1,6 +1,6 @@
-import { PriceBlock } from "@/components/shared/price-block";
 import type { BundleData } from "@/types";
 import ReviewRow from "./review-row";
+import { Price } from "@/components/shared/price";
 
 export default function ShippingRow({
   shipping,
@@ -13,12 +13,24 @@ export default function ShippingRow({
       label={shipping.label}
       className="border-t border-border-divider pt-[15px] pb-[10px]"
     >
-      <PriceBlock
-        comparePrice={shipping.comparePrice}
-        price={shipping.price}
-        priceLabel={shipping.priceLabel}
-        className="text-sm md:text-base"
-      />
+      <div className="flex flex-col items-end">
+        {shipping.comparePrice !== shipping.price ? (
+          <Price
+            value={shipping.comparePrice}
+            color="base"
+            size={"sm"}
+            strikethrough
+            fontWeight={"semibold"}
+          />
+        ) : null}
+
+        <Price
+          value={shipping.price}
+          color={"brand"}
+          size={"sm"}
+          fontWeight={"semibold"}
+        />
+      </div>
     </ReviewRow>
   );
 }

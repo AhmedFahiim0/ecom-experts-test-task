@@ -47,7 +47,7 @@ export function VariantSelector({
               src={variant.image}
               alt=""
               aria-hidden
-              className="h-3.5 w-3.5 shrink-0 rounded-xs border border-border-subtle object-cover"
+              className="h-3.5 w-3.5 shrink-0 rounded-xs  object-cover"
             />
             <span className="text-xs tracking-[0.6px] leading-[100%]">
               {" "}

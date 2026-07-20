@@ -13,7 +13,7 @@
   --color-text: #1f1f1f;
   --color-text-secondary: rgba(31, 31, 31, 0.75);
   --color-text-muted: #484848;
-  --color-text-price: #575757;
+  --color-price: #575757;
   --color-text-strong: #0b0d10;
   --color-text-label: #a8b2bd;
   --color-text-strike: #6f7882;
@@ -39,9 +39,7 @@
   --radius-thumb: 5px;
   --radius-btn: 7px;
   --radius-lg: 10px;
-  --font-gilroy: "Gilroy", "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-gilroy: "Gilroy";
 
   /* Type scale, overridden to match the Figma px values exactly */
   --text-xs: 10px;

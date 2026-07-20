@@ -1,14 +1,13 @@
 import { CountControl } from "@/components/shared/count-control";
 import ReviewRow from "./review-row";
 import type { ReviewLineItem } from "../types";
-import { PriceBlock } from "@/components/shared/price-block";
+import { Price } from "@/components/shared/price";
 
 export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
   const {
     product,
     quantity,
-    lineTotal,
-    lineCompareTotal,
+
     hasAddControl,
     onIncrement,
     onDecrement,
@@ -34,13 +33,24 @@ export default function ReviewProduct({ item }: { item: ReviewLineItem }) {
           />
         ) : null}
 
-        <PriceBlock
-          className="text-sm md:text-base"
-          comparePrice={lineCompareTotal}
-          price={lineTotal}
-          priceLabel={product.priceLabel}
-          suffix={product.stepId === "plan" ? "/mo" : ""}
-        />
+        <div className="flex flex-col items-end">
+          {product.comparePrice !== product.price ? (
+            <Price
+              value={product.comparePrice}
+              color="base"
+              size={"sm"}
+              fontWeight={"semibold"}
+              strikethrough
+            />
+          ) : null}
+
+          <Price
+            value={product.price}
+            color={"brand"}
+            size={"sm"}
+            fontWeight={"semibold"}
+          />
+        </div>
       </div>
     </ReviewRow>
   );

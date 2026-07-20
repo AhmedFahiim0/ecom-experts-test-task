@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { CountControl } from "@/components/shared/count-control";
 import type { Product } from "@/types";
 import { VariantSelector } from "./variant-selector";
+import { Price } from "@/components/shared/price";
 
 const cardVariants = cva(
   "flex items-center gap-[19px] rounded-lg bg-surface p-[11px] transition-[border-color]",
@@ -25,18 +26,6 @@ const cardVariants = cva(
     },
   },
 );
-
-const priceVariants = cva("text-end", {
-  variants: {
-    structure: {
-      versionOne: "flex flex-col",
-      versionTwo: "flex flex-row items-baseline gap-2",
-    },
-  },
-  defaultVariants: {
-    structure: "versionOne",
-  },
-});
 
 export interface ProductCardProps {
   product: Product;
@@ -103,15 +92,12 @@ export function ProductCard({
             max={product.maxQuantity}
             aria-label={product.name}
           />
-          <div className={priceVariants({ structure })}>
+          <div className="flex flex-col">
             {product.comparePrice !== product.price ? (
-              <span className="text-sale line-through">
-                {formatCurrency(product.comparePrice)}
-              </span>
+              <Price value={product.comparePrice} color="sale" strikethrough />
             ) : null}
-            <span className="text-text-price">
-              {product.priceLabel ?? formatCurrency(product.price)}
-            </span>
+
+            <Price value={product.price} color={"base"} />
           </div>
         </div>
       </div>

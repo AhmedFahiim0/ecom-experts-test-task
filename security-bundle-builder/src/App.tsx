@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import { CartProvider } from "@/context/cart-context";
-import { getBundleData } from "@/features/bundle-builder";
-import { ReviewPanel } from "@/features/review-panel";
 import type { BundleData } from "@/types";
 import { BundleBuilder } from "./features/bundle-builder";
+import { ReviewPanel } from "./features/review-panel";
+import { getBundleData } from "./features/bundle-builder/api/get-bundle-data";
 
 function App() {
   const [bundle, setBundle] = useState<BundleData | null>(null);
@@ -13,9 +13,7 @@ function App() {
     getBundleData().then(setBundle);
   }, []);
 
-  if (!bundle) {
-    return null;
-  }
+  if (!bundle) return null;
 
   return (
     <CartProvider products={bundle.products}>
