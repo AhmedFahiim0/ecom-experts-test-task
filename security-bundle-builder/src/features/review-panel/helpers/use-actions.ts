@@ -22,13 +22,15 @@ const CATEGORY_LABELS: Record<ProductCategory, string> = {
 export function useReviewPanelActions(products: Product[]) {
   const cart = useCart();
 
-  const lineItems = useMemo<ReviewLineItem[]>(() => {
+  const reviewPanelItems = useMemo<ReviewLineItem[]>(() => {
     const items: ReviewLineItem[] = [];
 
     for (const product of products) {
       const variants = product.variants?.length
         ? product.variants
         : [undefined];
+
+
       for (const variant of variants) {
         const quantity = cart.quantityFor(product.id, variant?.id);
         if (quantity <= 0) continue;
@@ -58,19 +60,20 @@ export function useReviewPanelActions(products: Product[]) {
       CATEGORY_ORDER.map((category) => ({
         category,
         label: CATEGORY_LABELS[category],
-        items: lineItems.filter((item) => item.product.category === category),
+        items: reviewPanelItems.filter((item) => item.product.category === category),
       })).filter((group) => group.items.length > 0),
-    [lineItems],
+    [reviewPanelItems],
   );
 
   const totals = useMemo<ReviewTotals>(() => {
-    const compareTotal = lineItems.reduce(
+    const compareTotal = reviewPanelItems.reduce(
       (sum, item) => sum + item.lineCompareTotal,
       0,
     );
-    const total = lineItems.reduce((sum, item) => sum + item.lineTotal, 0);
+
+    const total = reviewPanelItems.reduce((sum, item) => sum + item.lineTotal, 0);
     return { compareTotal, total, savings: compareTotal - total };
-  }, [lineItems]);
+  }, [reviewPanelItems]);
 
   const saveForLater = useCallback(() => {
     cart.save();

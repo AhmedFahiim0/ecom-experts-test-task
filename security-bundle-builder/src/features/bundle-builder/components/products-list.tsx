@@ -30,22 +30,21 @@ export interface AccordionProps {
   onNext: (nextStepId: StepId) => void;
   className?: string;
   ProductCard: ComponentType<ProductCardProps>;
-  productsGridClassName?: string;
 }
 
 export default function ProductsList({
   steps,
   openStepId,
-  onToggleStep,
-  onNext,
   className,
   ProductCard,
-  productsGridClassName,
+  onToggleStep,
+  onNext,
 }: AccordionProps) {
   return (
     <div className={cn("flex flex-col rounded-lg", className)}>
       {steps.map((step, index) => {
         const isOpen = step.id === openStepId;
+
         const nextStep = steps[index + 1];
 
         return (
@@ -107,7 +106,6 @@ export default function ProductsList({
                 <div className="flex flex-col gap-4 px-[15px] pb-5">
                   <div
                     className={
-                      productsGridClassName ??
                       "flex flex-col lg:flex-row flex-wrap justify-center gap-[15px]"
                     }
                   >
@@ -124,7 +122,7 @@ export default function ProductsList({
                     ))}
                   </div>
 
-                  {nextStep && step.nextLabel ? (
+                  {nextStep ? (
                     <Button
                       type="button"
                       variant="outline"

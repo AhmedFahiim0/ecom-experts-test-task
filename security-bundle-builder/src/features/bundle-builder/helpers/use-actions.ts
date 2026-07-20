@@ -50,6 +50,7 @@ export function useBundleBuilderActions(products: Product[]) {
         const stepProducts = products.filter(
           (product) => product.stepId === step.id,
         );
+
         const selectedCount = stepProducts.filter((product) =>
           isProductSelected(product, cart.quantityFor),
         ).length;
