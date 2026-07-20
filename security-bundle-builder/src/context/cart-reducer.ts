@@ -38,9 +38,6 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
         activeVariant: { ...state.activeVariant, [action.productId]: action.variantId },
       };
     }
-    case "SAVE": {
-      return state;
-    }
     case "RESTORE": {
       return action.state;
     }

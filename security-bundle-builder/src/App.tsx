@@ -9,8 +9,14 @@ import { getBundleData } from "./features/bundle-builder/api/get-bundle-data";
 function App() {
   const [bundle, setBundle] = useState<BundleData | null>(null);
 
+  const saveBundleData = async () => {
+    const res = await getBundleData();
+
+    setBundle(res);
+  };
+
   useEffect(() => {
-    getBundleData().then(setBundle);
+    saveBundleData();
   }, []);
 
   if (!bundle) return null;

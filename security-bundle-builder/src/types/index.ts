@@ -81,7 +81,6 @@ export type CartAction =
       max?: number;
     }
   | { type: "SELECT_VARIANT"; productId: string; variantId: string }
-  | { type: "SAVE" }
   | { type: "RESTORE"; state: CartState };
 
 export interface CartLineItem {

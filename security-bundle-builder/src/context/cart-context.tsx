@@ -7,7 +7,7 @@ import {
 } from "react";
 import { cartReducer } from "./cart-reducer";
 import { cartKey, type CartState, type Product } from "@/types";
-import { getCartFromStorage } from "@/utils/storage";
+import { getCartFromStorage, saveCartInStorage } from "@/utils/storage";
 import { buildDefaultCart, STORAGE_KEY } from "@/utils/build-default-cart";
 
 interface CartContextValue {
@@ -69,7 +69,7 @@ export function CartProvider({
         }),
       selectVariant: (productId, variantId) =>
         dispatch({ type: "SELECT_VARIANT", productId, variantId }),
-      save: () => dispatch({ type: "SAVE" }),
+      save: () => saveCartInStorage(STORAGE_KEY, cart),
       quantityFor: (productId, variantId) =>
         cart.quantities[cartKey(productId, variantId)] ?? 0,
       activeVariantFor: (productId) => cart.activeVariant[productId],
