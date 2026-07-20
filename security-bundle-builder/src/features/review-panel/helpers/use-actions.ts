@@ -94,6 +94,5 @@ export function useReviewPanelActions(products: Product[]) {
     totals,
     saveForLater,
     checkout,
-    hasSavedSystem: cart.hasSavedSystem,
   };
 }

@@ -35,7 +35,6 @@ interface CartContextValue {
   save: () => void;
   quantityFor: (productId: string, variantId?: string) => number;
   activeVariantFor: (productId: string) => string | undefined;
-  hasSavedSystem: boolean;
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -74,7 +73,6 @@ export function CartProvider({
       quantityFor: (productId, variantId) =>
         cart.quantities[cartKey(productId, variantId)] ?? 0,
       activeVariantFor: (productId) => cart.activeVariant[productId],
-      hasSavedSystem: cart.savedAt !== null,
     }),
     [cart],
   );

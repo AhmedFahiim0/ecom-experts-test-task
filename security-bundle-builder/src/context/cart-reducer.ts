@@ -3,7 +3,6 @@ import { cartKey, type CartAction, type CartState } from "@/types";
 export const initialCartState: CartState = {
   quantities: {},
   activeVariant: {},
-  savedAt: null,
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -40,7 +39,7 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
       };
     }
     case "SAVE": {
-      return { ...state, savedAt: new Date().toISOString() };
+      return state;
     }
     case "RESTORE": {
       return action.state;

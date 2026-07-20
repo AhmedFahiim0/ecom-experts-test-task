@@ -53,7 +53,6 @@ export function cartKey(productId: string, variantId?: string) {
 export interface CartState {
   quantities: Record<string, number>;
   activeVariant: Record<string, string>;
-  savedAt: string | null;
 }
 
 export type CartAction =

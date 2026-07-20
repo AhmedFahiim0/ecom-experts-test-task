@@ -3,7 +3,7 @@ import { cartKey, type CartState, type Product } from "@/types";
 export const STORAGE_KEY = "ecom-experts-cart";
 
 export function buildDefaultCart(products: Product[]): CartState {
-  const cart: CartState = { quantities: {}, activeVariant: {}, savedAt: null };
+  const cart: CartState = { quantities: {}, activeVariant: {} };
 
   for (const product of products) {
     if (product.variants?.length) {
